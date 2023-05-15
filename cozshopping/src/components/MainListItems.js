@@ -1,7 +1,7 @@
 import React from "react";
-import Item from "./ItemList";
+import ItemList from "./ItemList";
 
-import "./MainListItems.css";
+import "./List.css";
 
 const MainListItems = ({ itemList, bookmarkState, setBookmarkState }) => {
   const handleIsBookmarked = item => {
@@ -13,10 +13,10 @@ const MainListItems = ({ itemList, bookmarkState, setBookmarkState }) => {
   };
 
   return (
-    <itemList>
+    <ul class="itemLists">
       {itemList.map(item => {
         return (
-          <Item
+          <ItemList
             key={item.id}
             item={item}
             isBookmarked={handleIsBookmarked(item)}
@@ -25,7 +25,7 @@ const MainListItems = ({ itemList, bookmarkState, setBookmarkState }) => {
           />
         );
       })}
-    </itemList>
+    </ul>
   );
 };
 

@@ -22,26 +22,27 @@ const ItemList = ({ item, setBookmarkState, isBookmarked }) => {
   };
 
   return (
-    <item>
+    <div className="item">
       <imgBox>
         <img
+          className="imgs"
           src={item.image_url ? item.image_url : item.brand_image_url}
           alt="img"
         />
-        <FontAwesomeIcon>
-          className={isBookmarked ? bookcolor : bookmark}
+        <FontAwesomeIcon
+          className={isBookmarked ? 'bookcolor' : 'bookmark'}
           size="lg"
           icon={faStar}
           onClick={() => {
             handleBookmark(item);
           }}
-        </FontAwesomeIcon>
+        />
       </imgBox>
       <firstLine>
         {
-          <title>
+          <titles>
             {item.title ? item.title : item.brand_name}
-          </title>
+          </titles>
         }
         {(() => {
           switch (item.type) {
@@ -77,7 +78,7 @@ const ItemList = ({ item, setBookmarkState, isBookmarked }) => {
           })()}
         </follower>
       </firstLine>
-    </item>
+    </div>
   );
 };
 
