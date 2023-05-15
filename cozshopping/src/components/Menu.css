@@ -1,0 +1,25 @@
+menu {
+  position: absolute;
+  width: 200px;
+  height: 130px;
+  border-radius: 5px;
+  border-color : black;
+  border-style :dashed;
+  background: #b1b1b1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 4rem;
+  right: 2.6rem;
+}
+
+li {
+  padding: 5px;
+  cursor: pointer;
+  color:white;
+}
+
+li:hover {
+  background: #696969;
+}

@@ -1,0 +1,25 @@
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px 50px;
+  background: #fefefe;
+  box-shadow: 0 3px 8px 5px #dcdcdc;
+  position: sticky;
+  top: 0;
+}
+
+logo {
+  display: flex;
+}
+imgs {
+  display:flex;
+}
+ham {
+  margin-left: auto;
+}
+
+h2 {
+  margin-left: 10px;
+  font-family: 나눔스퀘어;
+}
