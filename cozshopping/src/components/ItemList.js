@@ -30,7 +30,7 @@ const ItemList = ({ item, setBookmarkState, isBookmarked }) => {
           alt="img"
         />
         <FontAwesomeIcon
-          className={isBookmarked ? 'bookcolor' : 'bookmark'}
+          className={isBookmarked ? "bookcolor" : "bookmark"}
           size="lg"
           icon={faStar}
           onClick={() => {

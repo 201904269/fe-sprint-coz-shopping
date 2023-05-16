@@ -16,6 +16,10 @@ const MainPage = () => {
       setItemList(res.data);
     });
   }, []);
+  useEffect(() => {
+    const storedBookmarks = JSON.parse(localStorage.getItem("bookmark")) || [];
+    setBookmarkState(storedBookmarks);
+  }, []);
 
   return (
     <main>
