@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import ItemList from "../components/ItemList";
 import "./ProductList.css"
 import all from "./all.png";
@@ -7,10 +8,11 @@ import category from "./category.png";
 import exhibition from "./exhibition.png";
 import brand from "./brand.png";
 
-const BookmarkList = ({ bookmarkState = [], setBookmarkState }) => {
+const BookmarkList = ({ item, bookmarkState, setBookmarkState }) => {
   const [itemListPage, setItemListPage] = useState([]);
   const [selectedType, setSelectedType] = useState("All");
-  
+
+  const url = "http://cozshopping.codestates-seb.link/api/v1/products";
   const handleIsBookmarked = item => {
     if (bookmarkState) {
       return bookmarkState.some(x => x.id === item.id);
@@ -18,13 +20,17 @@ const BookmarkList = ({ bookmarkState = [], setBookmarkState }) => {
       return false;
     }
   };
+
   const handleSelectCategory = type => {
     setSelectedType(type);
   };
+  useEffect(() => {
+    axios.get(url).then(res => {
+      setItemListPage(res.data);
+    });
+  }, []);
 
-  //useEffect를 어떻게 줄까 고민...
 
-  
   const choose = [
     { img: all, name: "전체", type: "All" },
     { img: product, name: "상품", type: "Product" },
@@ -49,19 +55,18 @@ const BookmarkList = ({ bookmarkState = [], setBookmarkState }) => {
        ))}
       </div>
       <ul className="itemList">
-        {bookmarkState ? (
-          itemListPage.map(item => {
-            return (
-              <ItemList
-                key={item.id}
-                item={item}
-                isBookmarked={handleIsBookmarked(item)}
-                bookmarkState={bookmarkState}
-                setBookmarkState={setBookmarkState}
-              />
-            );
-          })
-        ) : (null)}
+        {
+          bookmarkState.filter(item => selectedType === "All" ? true : item.type === selectedType).map(item => {
+          return (
+            <ItemList
+              key={item.id}
+              item={item}
+              isBookmarked={handleIsBookmarked(item)}
+              bookmarkState={bookmarkState}
+              setBookmarkState={setBookmarkState}
+            />
+          );
+        })}
       </ul>
     </div>
   )

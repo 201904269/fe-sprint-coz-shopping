@@ -23,7 +23,10 @@ function App() {
                                             bookmarkState={bookmarkState}
                                             setBookmarkState={setBookmarkState}
                                            />} />
-          <Route path="/bookmark" element={<BookmarkList />} />
+          <Route path="/bookmark" element={<BookmarkList 
+                                            bookmarkState={bookmarkState}
+                                            setBookmarkState={setBookmarkState}
+                                            />} />
         </Routes>
       </main>
     </div>
