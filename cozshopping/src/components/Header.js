@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "../logo.png";
 import ham from "../hamburg.png";
 import './Headers.css';
-import Menu from "../components/Menu";
+import Menu from "./Menu";
 
 const Header = () => {
   const [dropdownState, setDropdownState] = useState(false);
