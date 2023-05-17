@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Modal from "../components/Modal";
+import Modal from "./Modal";
 import "./MainListItems.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
@@ -7,27 +7,12 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 const ItemList = ({ item, setBookmarkState, isBookmarked }) => {
   const [modalState, setModalState] = useState(false);
   const [Bookmarked, setBookmarked] = useState(false);
-
+  
   const modalOpen = () => {
     setModalState(true);
     setBookmarked(isBookmarked);
   };
-  const modalClose = () => {
-    if (isBookmarked) {
-      const bookmark = JSON.parse(localStorage.getItem("bookmark"));
-      const existingItemIndex = bookmark.findIndex(x => x.id === item.id);
-      bookmark.splice(existingItemIndex, 1);
-      localStorage.setItem("bookmark", JSON.stringify(bookmark));
-      setBookmarkState(JSON.parse(localStorage.getItem("bookmark")));
-    }
-    if (!isBookmarked) {
-      const bookmark = JSON.parse(localStorage.getItem("bookmark")) || [];
-      bookmark.unshift(item);
-      localStorage.setItem("bookmark", JSON.stringify(bookmark));
-      setBookmarkState(JSON.parse(localStorage.getItem("bookmark")));
-    }
-    setModalState(false);
-  };
+  
   const handleBookmark = item => {
     const bookmark = JSON.parse(localStorage.getItem("bookmark")) || [];
 
@@ -43,7 +28,28 @@ const ItemList = ({ item, setBookmarkState, isBookmarked }) => {
     localStorage.setItem("bookmark", JSON.stringify(bookmark));
     setBookmarkState(JSON.parse(localStorage.getItem("bookmark")));
   };
-
+  const handleModalBookmark = () => {
+    handleBookmark(item); // 수정: 북마크 핸들러에 상품 정보를 전달
+  };
+  const modalClose = () => {
+    if (isBookmarked !== isBookmarked) {
+    if (isBookmarked) {
+      const bookmark = JSON.parse(localStorage.getItem("bookmark"));
+      const existingItemIndex = bookmark.findIndex(x => x.id === item.id);
+      bookmark.splice(existingItemIndex, 0);
+      localStorage.setItem("bookmark", JSON.stringify(bookmark));
+      setBookmarkState(JSON.parse(localStorage.getItem("bookmark")));
+    }
+    if (!isBookmarked) {
+      const bookmark = JSON.parse(localStorage.getItem("bookmark")) || [];
+      bookmark.unshift(item);
+      localStorage.setItem("bookmark", JSON.stringify(bookmark));
+      setBookmarkState(JSON.parse(localStorage.getItem("bookmark")));
+    }
+  }
+    setModalState(false);
+  };
+  
   return (
     <>
       {modalState && (
@@ -53,6 +59,8 @@ const ItemList = ({ item, setBookmarkState, isBookmarked }) => {
           title={item.title || item.brand_name}
           setBookmarked={setBookmarked}
           Bookmarked={Bookmarked}
+          handleBookmark={handleModalBookmark} // 북마크 핸들러 전달
+          isBookmarked={isBookmarked} // 북마크 상태 전달
         />
       )}
     <div className="item">

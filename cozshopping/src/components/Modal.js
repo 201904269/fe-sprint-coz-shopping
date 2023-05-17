@@ -7,8 +7,8 @@ const Modal = ({
   imageUrl,
   modalClose,
   title,
-  setBookmarked,
-  Bookmarked,
+  handleBookmark,
+  isBookmarked,
 }) => {
   const handleOverlayClick = event => {
     if (event.target === event.currentTarget) {
@@ -17,7 +17,7 @@ const Modal = ({
   };
 
   const handleModalBookmark = () => {
-    setBookmarked(prev => !prev);
+    handleBookmark();
   };
 
   return (
@@ -33,7 +33,7 @@ const Modal = ({
         <img className="img" src={imageUrl} alt="modalImg" />
         <span className="title">{title}</span>
         <FontAwesomeIcon
-          className={Bookmarked ? "bookcolor" : "bookmark"}
+          className={isBookmarked ? "bookcolor" : "bookmark"}
           size="lg"
           icon={faStar}
           onClick={handleModalBookmark}

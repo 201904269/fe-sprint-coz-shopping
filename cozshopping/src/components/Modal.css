@@ -45,6 +45,7 @@
   left: 20px;
   color: #ffffff;
   cursor: pointer;
+  padding-bottom: 10px;
 }
 
 .bookcolor {
@@ -53,6 +54,7 @@
   left: 20px;
   color: yellow;
   cursor: pointer;
+  padding-bottom: 10px;
 }
 
 .title {

@@ -12,6 +12,8 @@ menu {
   align-items: center;
   top: 5rem;
   right: 2.6rem;
+  position:fixed;
+  z-index:2;
 }
 
 li {
