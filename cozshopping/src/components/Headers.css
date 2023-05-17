@@ -6,6 +6,7 @@ header {
   background: #fefefe;
   box-shadow: 0 3px 8px 5px #dcdcdc;
   position: sticky;
+  z-index: 1;
   top: 0;
   margin-bottom:30px;
 }
