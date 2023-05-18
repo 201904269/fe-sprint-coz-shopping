@@ -17,8 +17,9 @@ logo {
 imgs {
   display:flex;
 }
-ham {
+.ham {
   margin-left: auto;
+  z-index:2;
 }
 
 h2 {

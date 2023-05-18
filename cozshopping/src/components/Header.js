@@ -11,25 +11,27 @@ const Header = () => {
   const handleDropdown = () => {
     setDropdownState(!dropdownState);
   };
+  const closeMenu = () => {
+    setDropdownState(false); // 메뉴를 닫는 함수입니다.
+  };
   return (
     <>
       <header>
-        <Link to="/">
+        <Link to="/" onClick={closeMenu}>
           <logo>
             <imgs>
             <img src={logo} alt="logo" /></imgs>
             <h2>COZ Shopping</h2>
           </logo>
         </Link>
-
-        <ham>
-          <img
+        <img
+            className="ham"
             src={ham}
             onClick={handleDropdown}
-          />
-        </ham>
+        />
+        
       </header>
-      {dropdownState && <Menu />}
+      {dropdownState && <Menu closeMenu={closeMenu}/>}
     </>
   );
 }

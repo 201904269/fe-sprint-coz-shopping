@@ -3,6 +3,8 @@ import Modal from "./Modal";
 import "./MainListItems.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { toast, ToastContainer  } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ItemList = ({ item, setBookmarkState, isBookmarked }) => {
   const [modalState, setModalState] = useState(false);
@@ -12,7 +14,9 @@ const ItemList = ({ item, setBookmarkState, isBookmarked }) => {
     setModalState(true);
     setBookmarked(isBookmarked);
   };
-  
+  const handleBookmarkClick = () => {
+    handleBookmark(item);
+  };
   const handleBookmark = item => {
     const bookmark = JSON.parse(localStorage.getItem("bookmark")) || [];
 
@@ -21,12 +25,14 @@ const ItemList = ({ item, setBookmarkState, isBookmarked }) => {
 
     if (isExistingItem) {
       bookmark.splice(existingItemIndex, 1);
+      toast.error("⭐북마크에서 제거되었습니다.");
     } else {
       bookmark.unshift(item);
+      toast.success("⭐북마크에 추가되었습니다.");
     }
 
     localStorage.setItem("bookmark", JSON.stringify(bookmark));
-    setBookmarkState(JSON.parse(localStorage.getItem("bookmark")));
+    setBookmarkState(JSON.parse(JSON.stringify(bookmark)));
   };
   const handleModalBookmark = () => {
     handleBookmark(item); // 수정: 북마크 핸들러에 상품 정보를 전달
@@ -75,9 +81,7 @@ const ItemList = ({ item, setBookmarkState, isBookmarked }) => {
           className={isBookmarked ? "bookcolor" : "bookmark"}
           size="lg"
           icon={faStar}
-          onClick={() => {
-            handleBookmark(item);
-          }}
+          onClick={handleBookmarkClick}
         />
       </imgBox>
       <firstLine>
