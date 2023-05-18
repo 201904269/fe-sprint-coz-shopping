@@ -1,1 +1,1 @@
-# fe-sprint-coz-shopping
+# Please Press 'cozshopping'
