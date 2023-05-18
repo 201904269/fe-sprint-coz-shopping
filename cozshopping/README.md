@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![녹화_2023_05_18_14_13_59_2-min](https://github.com/201904269/web-test/assets/94033569/a2ef3402-b13c-49c2-8f0a-e66e9048e8f2)
 
 ## Available Scripts
 
