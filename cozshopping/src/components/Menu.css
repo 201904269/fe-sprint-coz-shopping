@@ -10,8 +10,8 @@ menu {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 5rem;
-  right: 2.6rem;
+  top: 3.2rem;
+  right: 2.8rem;
   position:fixed;
   z-index:2;
 }
